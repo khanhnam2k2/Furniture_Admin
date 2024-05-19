@@ -3,8 +3,11 @@ import React, { useEffect, useState } from "react";
 import { API_URL } from "../../../config";
 import GlobalApi from "../../api/GlobalApi";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function CreateProduct() {
+  const navigateTo = useNavigate();
+
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -65,18 +68,21 @@ function CreateProduct() {
     });
     try {
       const rep = await GlobalApi.createProduct(formDataToSend);
-      setFormData({
-        name: "",
-        images: [],
-        rating: "",
-        quantity: "",
-        price: "",
-        materials: "",
-        size: "",
-        category: "",
-        description: "",
-        bestsellers: false,
-      });
+      if (rep.status === 201) {
+        setFormData({
+          name: "",
+          images: [],
+          rating: "",
+          quantity: "",
+          price: "",
+          materials: "",
+          size: "",
+          category: "",
+          description: "",
+          bestsellers: false,
+        });
+        navigateTo("/products");
+      }
     } catch (error) {
       if (error.response && error.response.status === 403) {
         toast.error(error.response.data.error);

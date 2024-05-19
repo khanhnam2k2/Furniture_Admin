@@ -32,7 +32,7 @@ function SideMenu() {
   return (
     <div className="overflow-y-auto w-80 md:block  hidden">
       <div className="w-full flex h-screen flex-col justify-between border-e bg-white">
-        <div className="px-4 py-6">
+        <div className="px-4 py-1">
           <ul className="mt-6 space-y-1">
             {menuList.map((menu, index) => (
               <li key={index}>
