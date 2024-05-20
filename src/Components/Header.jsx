@@ -20,7 +20,7 @@ function Header() {
     <div className="bg-white py-6 shadow-lg px-10">
       <div className="flex items-center justify-between">
         <div className="flex items-center ">
-          <img src="../../public/logo.png" className="w-16 h-16" />
+          <img src="/logo.png" className="w-16 h-16" />
         </div>
 
         <div className="">

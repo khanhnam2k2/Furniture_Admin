@@ -23,7 +23,6 @@ function ProductPage() {
   const fetchData = async (currentPage) => {
     try {
       const response = await GlobalApi.getProductList(currentPage);
-      console.log(response.data.products);
       setProducts(response.data.products);
       setTotalPages(response.data.totalPages);
     } catch (error) {

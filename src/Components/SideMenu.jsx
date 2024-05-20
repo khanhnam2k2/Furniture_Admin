@@ -4,7 +4,6 @@ import { AuthContext } from "../context/AuthContext";
 
 function SideMenu() {
   const { user } = useContext(AuthContext);
-  const [activeMenu, setActiveMenu] = useState(""); // State để lưu trữ menu đang active
 
   const menuList = [
     {
@@ -25,10 +24,6 @@ function SideMenu() {
     },
   ];
 
-  const handleMenuClick = (name) => {
-    setActiveMenu(name); // Cập nhật menu đang active khi người dùng nhấp vào
-  };
-
   return (
     <div className="overflow-y-auto w-80 md:block  hidden">
       <div className="w-full flex h-screen flex-col justify-between border-e bg-white">
@@ -38,12 +33,8 @@ function SideMenu() {
               <li key={index}>
                 <Link
                   to={menu.link}
-                  className={`block rounded-lg px-4 py-2 text-base font-medium ${
-                    activeMenu === menu.name
-                      ? "text-white bg-blue-400"
-                      : "text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                  }`}
-                  onClick={() => handleMenuClick(menu.name)}
+                  className={`block rounded-lg px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700
+                  `}
                 >
                   {menu.name}
                 </Link>
